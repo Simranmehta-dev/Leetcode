@@ -30,13 +30,28 @@ public:
         }
         return dp[n];
     }
+
+    int SpaceOpt(int n){
+        int pre1=0;
+        int pre2=1;
+        int s=0;
+        for(int i=2;i<=n;i++){
+            s=pre1+pre2;
+            pre1=pre2;
+            pre2=s;
+        }
+        return pre2;
+    }
     int fib(int n) {
         //return Recursion(n);
 
         // vector<int>dp(n+1,-1);
         // return Memoization(n,dp);
         
+        // if(n==0||n==1)return n;
+        // return Tabulation(n);
+        
         if(n==0||n==1)return n;
-        return Tabulation(n);
+        return SpaceOpt(n);
     }
 };
