@@ -31,11 +31,31 @@ public:
         }
         return dp[n];
     }
+
+    int spaceopti(vector<int>& nums){
+        int curr=nums[0];
+        int prev=0;
+
+        for(int i=1;i<nums.size();i++){
+            int take=nums[i];
+            if (i > 1)
+            take += prev;
+            int not1=curr;
+
+            int next=max(take,not1);
+          
+            prev=curr;
+              curr=next;
+        }
+        return curr;
+    }
     int rob(vector<int>& nums) {
       //  return solveUsingRec(nums,0);
       int n=nums.size();
     //   vector<int>dp(n+1,-1);
     //   return SolveMem(nums,0,dp);
-        return solveTab(nums,0);
+       // return solveTab(nums,0);
+
+       return spaceopti(nums);
     }
 };
