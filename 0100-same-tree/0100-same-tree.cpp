@@ -11,25 +11,18 @@
  */
 class Solution {
     void preorder(vector<int>&a,TreeNode* p){
-    //     if(p==NULL){
-    //         return;
-    //     }
-    //    if(p->val==NULL){
-    //         a.push_back(INT_MIN);
-    //    }
-    //    else{
-    //         a.push_back(p->val);
-    //    }
-    //     preorder(a,p->left);
-    //     preorder(a,p->right);
-
-         if (p == nullptr) {
-            a.push_back(INT_MIN); // or any other sentinel value to represent NULL nodes
-        } else {
-            a.push_back(p->val);
-            preorder(a, p->left);
-            preorder(a, p->right);
+        if(p==NULL){
+           a.push_back(INT_MIN);
         }
+       
+       else{
+            a.push_back(p->val);
+               preorder(a,p->left);
+        preorder(a,p->right);
+       }
+     
+
+        
     }
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
